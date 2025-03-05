@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+        <script>
+            var books=[
+                {
+                    "id":"p1",
+                    "name":"Book 1",
+                    "price":100,
+                    "image":"1.png"
+                },
+                {
+                    "id":"p2",
+                    "name":"Book 2",
+                    "price":200,
+                    "image":"2.png"
+                },
+                {
+                    "id":"p3",
+                    "name":"Book 3",
+                    "price":120,
+                    "image":"1.png"
+                },
+                {
+                    "id":"p4",
+                    "name":"Book 4",
+                    "price":310,
+                    "image":"2.png"
+                },
+                {
+                    "id":"p5",
+                    "name":"Book 5",
+                    "price":103,
+                    "image":"1.png"
+                },
+            ]
+        </script>
+    </head>
+    <body>
+        <h3>Danh sách Books:</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Mã sách</th>
+                    <th>Tên Sách</th>
+                    <th>Giá Sách</th>
+                    <th>Hình ảnh</th>
+                </tr>
+            </thead>
+            <tbody id="tbodysach">
+
+            </tbody>
+        </table>
+        <script>
+            function hienthi_danhsach_cach1()
+            {
+                tbodysach=document.getElementById("tbodysach")
+                //Dùng foreach kết hợp cú hợp Lambda Expression:
+                books.forEach(b=>{
+                    row=document.createElement("tr")
+                    td=document.createElement("td")
+                    td.innerText=b.id
+
+                    row.appendChild(td)
+                    
+                    td=document.createElement("td")
+                    td.innerText=b.name
+
+                    row.appendChild(td)
+
+                    td=document.createElement("td")
+                    td.innerText=b.price
+                    
+                    row.appendChild(td)
+                    
+                    imghinh=document.createElement("img")
+                    imghinh.setAttribute("src","images/"+b.image)
+                    imghinh.setAttribute("width","150")
+                    imghinh.setAttribute("width","150")
+                    imghinh.setAttribute("alt","Không thấy hình Thím ơi")
+                    td=document.createElement("td")
+                    td.appendChild(imghinh)
+
+                    row.appendChild(td)
+                    tbodysach.appendChild(row)
+                })
+            }
+            hienthi_danhsach_cach1()
+        </script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+body {
+    background-color: #CCFFFF;
+}
+h1{
+    font-size: 24px;
+}
+hr{
+    border: 1px solid rgb(0, 0, 0);
+    margin: 20px 0px;
+}
+.form_row {
+    margin: 10px 0;
+}
+.form_button {
+    margin-top: 20px;
+}
+table {
+    width: 80%;
+    margin: 10px 0;
+}
+
+th, td {
+    border: 2px ridge #d4d4d4;
+    padding: 1px;
+    text-align: center;
+}
+th {
+    font-weight: bold;
+}
+
+.col1{
+    width: 20%;
+  }
+  .col2{
+    width: 40%;
+  }
+  .col3{
+    width: 25%;
+  }
+  .col4{
+    width: 10%;
+  }
+
+td select {
+    width: 100%;
+}
+td input {
+    width: 70%;
+}
+
+#firstname, #lastname {
+    width: 150px;
+}
+
+#number{
+    width: 100px;
+}
+
+#keywords{
+    margin-top: 20px;
+    width: 550px;
+    height: 80px;
+    vertical-align: top;
+    resize: none ;
+}
+

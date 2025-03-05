@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+        <script type="text/javascript">
+            person = {
+                firstname: "John",
+                lastname: "Doe",
+                age: 50, 
+                getFullName:function() {
+                    return this.firstname + " " + this.lastname
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            function loadInFor() 
+            {
+                document.getElementById("firstname").innerText= person.firstname;
+                document.getElementById("lastname").innerText = person.lastname;
+                document.getElementById("age").innerText = person.age;
+                document.getElementById("fullname").innerText = person.getFullName();
+            }
+        </script>   
+    </head>
+    <body>
+        <button type="button" onclick="loadInFor()">Load person in4</button>
+        <table border="1">
+            <tr>
+                <td>First Name: </td>
+                <td id="firstname"></td>
+            </tr>
+            <tr>
+                <td>Last Name: </td>
+                <td id="lastname"></td>
+            </tr>
+            <tr>
+                <td>Age: </td>
+                <td id="age"></td>
+            </tr>
+            <tr>
+                <td>Full Name: </td>
+                <td id="fullname"></td>
+            </tr>
+        </table>
+    </body>
+</html>

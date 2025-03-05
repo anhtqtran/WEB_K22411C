@@ -1,0 +1,31 @@
+table {
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+th, td {
+    border: 1px solid #000; 
+    padding: 8px; 
+    text-align: left;
+    font-weight: normal;
+}
+
+.title {
+    background-color: blue; 
+    color: white;
+}
+
+tbody tr:hover {
+    background-color: #ffb2e4; 
+    cursor: pointer;
+}
+
+.title:hover {
+    background-color: blue; 
+}
+
+select {
+    padding: 5px; 
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+}

@@ -1,0 +1,12 @@
+table {
+    border-collapse: collapse; /* Gộp các đường viền */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+}
+th, td {
+    border: 1px solid black; /* Đường viền đen */
+    padding: 8px; /* Khoảng cách giữa nội dung và đường viền */
+    text-align: left; /* Căn trái nội dung */
+}
+th {
+    background-color: #f2f2f2; /* Màu nền cho tiêu đề */
+}

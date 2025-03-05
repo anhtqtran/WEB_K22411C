@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>demo dom cho thẻ p</title>
+        <script type="text/javascript">
+            function usingText()
+            {
+                x=document.getElementById("intro");
+                x.innerText="Welcome to UEL";
+            }
+            function usingHTML()
+            {
+                p=document.getElementById("intro");
+                p.innerHTML="<font color='red'>Welcome to VNU</font>";
+            }
+            function usingAttribute()
+            {
+              p=document.getElementById("intro");
+                p.innerHTML="tranduythanh.com"
+                p.setAttribute("style","color:blue;font-size:20px");  
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" onclick="usingText()">Welcome UEL</button>
+        <button type="button" onclick="usingHTML()">Welcome VNU</button>
+        <button type="button" onclick="usingAttribute()">Học Lập Trình</button>
+
+        <p id="intro"></p>
+    </body>
+</html>

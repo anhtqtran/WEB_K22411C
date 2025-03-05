@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+        <script type="text/javascript">
+            function tinhGiaiThua(n) {
+                n=Number(n)
+                i=1
+                gt=1
+                while (i<=n) {
+                    gt=gt*i
+                    i++
+                }
+                document.getElementById("ketqua").innerText=gt
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Tính giai thừa</h1>
+        <form>
+            <p>Nhập n: </p>
+            <input type="text" id="hsn" onchange="tinhGiaiThua(hsn.value)">
+            <p id="ketqua"></p>
+            <input type="button" value="Tính Giai thừa" onclick="tinhGiaiThua(hsn.value)">
+        </form>
+    </body>
+</html>

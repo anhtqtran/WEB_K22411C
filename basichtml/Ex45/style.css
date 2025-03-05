@@ -1,0 +1,75 @@
+body{
+    margin-left: 0;
+    margin-right: 10px;
+}
+.logo {
+    float: right;
+}
+.online{
+    float: right;
+    width: fit-content;
+    background-color: rgb(200, 130, 0);
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 13pt;
+    padding: 4px;
+}
+.scrapbook{
+    float: right;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    font-size: 30pt;
+    font-weight:lighter;
+    text-shadow: 2px 2px 4px #a29c9c;
+}
+.hr1 {
+    border: 1px solid orange;
+    margin-bottom: 0px;
+    margin-top: 60px;
+}
+.hr2 {
+    border: 1px solid orange;
+}
+nav {
+    background: url(hinh/back.jpg) 95% 0;
+    float: left;
+    height: 100%;
+    margin: 0;
+    width: 180px;
+}
+ul li::marker {color: brown;}
+h1{
+    color: orange;
+    font-family: Arial, Helvetica, sans-serif;
+}
+p {color: rgb(141, 0, 0);
+}
+
+.box {
+    background-color: rgb(255, 241, 225);
+    padding-right: 50px ;
+    border: inset coral;
+    color: rgb(141, 0, 0);
+    width: 250px;
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.basic {
+    margin: 0;
+}
+.foot {
+    text-align: right;
+    margin-right: 50px;
+    color: orange;
+}
+
+.sect {
+    margin-left: 190px;
+}
+a:visited{
+    color: rgb(0, 0, 255);
+}
+a:hover{
+    color: rgb(255, 80, 138);
+    font-size: larger;
+    font-weight: bold;
+}

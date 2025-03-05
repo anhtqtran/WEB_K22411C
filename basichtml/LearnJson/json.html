@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>demo json</title>
+        <script type="text/javascript"> 
+            dataset= {
+                "id": "1",
+                "name": "Máy tính",
+                "products": [
+                    {
+                        "id": "1",
+                        "name": "Product 1",
+                        "price": "100"
+                    },
+                    {
+                        "id": "2",
+                        "name": "Product 2",
+                        "price": "200"
+                    },
+                    {
+                        "id": "3",
+                        "name": "Product 3",
+                        "price": "300"
+                    }
+                ]
+            }
+
+        </script>
+    </head>
+        <table border="1">
+            <tr>
+                <td>Cate Id</td>
+                <td id="cateid"></td>
+            </tr>
+            <tr>
+                <td>Cate Name</td>
+                <td id="catename"></td>
+            </tr>
+        </table>
+    <script type="text/javascript">
+        document.getElementById("cateid").innerText = dataset.id;
+        document.getElementById("catename").innerText = dataset.name;
+    </script>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+            </tr>
+        </thead>
+        <tbody id="productbody">
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        productbody = document.getElementById("productbody");
+        products = dataset.products;
+        for (i = 0; i < products.length; i++) {
+            product = products[i];
+            id = product.id;
+            name = product.name;
+            price = product.price;
+            tr = document.createElement("tr");
+            productbody.appendChild(tr);
+            td = document.createElement("td");
+            td.innerText = id;
+            tr.appendChild(td);
+            td = document.createElement("td");
+            td.innerText = name;
+            tr.appendChild(td);
+            td = document.createElement("td");
+            td.innerText = price;
+            tr.appendChild(td);
+        }
+    </script>
+    <body>
+</html>

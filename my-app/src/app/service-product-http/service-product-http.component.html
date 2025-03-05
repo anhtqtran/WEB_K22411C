@@ -1,0 +1,19 @@
+<p>service-product-http works!</p>
+<table border="1">
+<tr>
+<td>Ma San Pham</td>
+<td>Ten San Pham</td>
+<td>Gia San Pham</td>
+<td>Picture</td>
+</tr>
+<tbody>
+<tr *ngFor="let p of products">
+<td>{{p.ProductId}}</td>
+<td>{{p.ProductName}}</td>
+<td>{{p.Price}} </td>
+<td>
+<img src="{{p.Image}}" width="50px" height="50px">
+</td>
+</tr>
+</tbody>
+</table>

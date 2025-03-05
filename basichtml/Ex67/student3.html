@@ -1,0 +1,169 @@
+<html>
+<head>
+    <title>Danh sách sinh viên</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        var dataset = "<sinhviens>";
+        dataset += "<sinhvien>";
+        dataset += "<mssv>K123456789</mssv>";
+        dataset += "<hoTen>Quách Thị Bán Bún Bò</hoTen>";
+        dataset += "<ngaySinh>7/7/1997</ngaySinh>";
+        dataset += "<gioiTinh>Nữ</gioiTinh>";
+        dataset += "</sinhvien>";
+        dataset += "<sinhvien>";
+        dataset += "<mssv>K12345000</mssv>";
+        dataset += "<hoTen>Hồng Lâu Mộng</hoTen>";
+        dataset += "<ngaySinh>2/2/1992</ngaySinh>";
+        dataset += "<gioiTinh>Nam</gioiTinh>";
+        dataset += "</sinhvien>";
+        dataset += "<sinhvien>";
+        dataset += "<mssv>K1674000</mssv>";
+        dataset += "<hoTen>Hồ Văn Đồ</hoTen>";
+        dataset += "<ngaySinh>2/7/1997</ngaySinh>";
+        dataset += "<gioiTinh>Nam</gioiTinh>";
+        dataset += "</sinhvien>";
+        dataset += "</sinhviens>";
+    </script>
+</head>
+<body>
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th colspan="4">Danh sách sinh viên</th>
+            </tr>
+            <tr>
+                <th onclick="sortTable(1)">Mã số sinh viên</th>
+                <th onclick="sortTable(2)">Họ tên</th>
+                <th onclick="sortTable(3)">Ngày sinh</th>
+                <th onclick="sortTable(4)">Giới tính</th>
+            </tr>
+        </thead>
+        <tbody id="tbodysinhvien">
+        </tbody>
+    </table>
+
+    <script>
+        var currentSortColumn = -1; 
+        var currentSortDirection = 'asc'; 
+
+        function tai_danhsach_sinhvien() {
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(dataset, "text/xml");
+            var students = xmlDoc.getElementsByTagName("sinhvien");
+            var tbodysinhvien = document.getElementById("tbodysinhvien");
+            tbodysinhvien.innerHTML = ""; // Clear previous content
+
+            for (var i = 0; i < students.length; i++) {
+                var sti = students[i];
+                var mssv = sti.getElementsByTagName("mssv")[0].childNodes[0].nodeValue;
+                var hoTen = sti.getElementsByTagName("hoTen")[0].childNodes[0].nodeValue;
+                var ngaySinh = sti.getElementsByTagName("ngaySinh")[0].childNodes[0].nodeValue;
+                var gioiTinh = sti.getElementsByTagName("gioiTinh")[0].childNodes[0].nodeValue;
+
+                var tr = document.createElement("tr");
+                tr.onclick = function() { openDetail(this); }; 
+                tbodysinhvien.appendChild(tr);
+
+                var tdmssv = document.createElement("td");
+                tdmssv.innerText = mssv;
+                tr.appendChild(tdmssv);
+
+                var tdhoten = document.createElement("td");
+                tdhoten.innerText = hoTen;
+                tr.appendChild(tdhoten);
+
+                var tdngaysinh = document.createElement("td");
+                tdngaysinh.innerText = ngaySinh;
+                tr.appendChild(tdngaysinh);
+
+                var tdgioitinh = document.createElement("td");
+                tdgioitinh.innerText = gioiTinh;
+                tr.appendChild(tdgioitinh);
+            }
+        }
+
+        function openDetail(row) {
+            var maSo = row.cells[0].textContent; // Get student ID
+            var url;
+
+            // Check conditions based on student ID
+            if (maSo === "K123456789") {
+                url = "/Ex66/bunbo.html"; 
+            } else if (maSo === "K12345000") {
+                url = "/Ex66/laumong.html"; 
+            } else if (maSo === "K1674000") {
+                url = "/Ex66/vando.html"; 
+            } 
+
+            // Redirect to detail page
+            if (url) {
+                window.location.href = url;
+            }
+        }
+
+        function sortTable(column) {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("studentTable");
+            switching = true;
+
+            // Determine sort direction
+            if (currentSortColumn === column) {
+                currentSortDirection = (currentSortDirection === 'asc') ? 'desc' : 'asc'; 
+            } else {
+                currentSortDirection = 'asc'; 
+            }
+            currentSortColumn = column; 
+
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+
+                for (i = 2; i < (rows.length - 1); i++) { 
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[column - 1]; // Adjust index
+                    y = rows[i + 1].getElementsByTagName("TD")[column - 1]; // Adjust index
+
+                    var xValue, yValue;
+                    if (column === 1) { // Mã số sinh viên
+                        // Extract numeric part for comparison
+                        var xNum = parseInt(x.innerHTML.substring(1), 10);
+                        var yNum = parseInt(y.innerHTML.substring(1), 10);
+                        xValue = xNum;
+                        yValue = yNum;
+                    } else if (column === 2) { // Họ tên
+                        xValue = x.innerHTML.toLowerCase(); 
+                        yValue = y.innerHTML.toLowerCase(); 
+                    } else if (column === 3) { // Ngày sinh
+                        var datePartsX = x.innerHTML.split('/');
+                        var datePartsY = y.innerHTML.split('/');
+                        xValue = new Date(datePartsX[2], datePartsX[1] - 1, datePartsX[0]).getTime(); 
+                        yValue = new Date(datePartsY[2], datePartsY[1] - 1, datePartsY[0]).getTime(); 
+                    } else {
+                        xValue = x.innerHTML.toLowerCase();
+                        yValue = y.innerHTML.toLowerCase();
+                    }
+
+                    if (currentSortDirection === "asc") {
+                        if (xValue > yValue) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else {
+                        if (xValue < yValue) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+
+        tai_danhsach_sinhvien();
+    </script>
+</body>
+</html>

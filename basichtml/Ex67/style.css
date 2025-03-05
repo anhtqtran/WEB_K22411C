@@ -1,0 +1,32 @@
+table {
+    border-collapse: collapse;
+    width: 100%; 
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left; 
+}
+
+th {
+    cursor: pointer; /* Thêm con trỏ cho các tiêu đề có thể sắp xếp */
+}
+
+th[colspan="4"] {
+    background-color: #FFC000; 
+    text-align: center;
+    color: #000;
+    font-size: larger;
+
+}
+thead tr {
+    background-color: #00B050; /* Màu nền cho hàng tiêu đề */
+    color: white;
+}
+
+
+tbody tr:hover {
+    background-color: yellow; /* Màu nền khi di chuột qua hàng */
+}
+

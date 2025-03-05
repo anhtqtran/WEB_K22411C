@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+        <script type="text/javascript">
+            var dataset = "<bookstore>"
+                dataset+="<book>"
+                    dataset+="<title>Everyday Italian</title>"
+                    dataset+="<author>Giada De Laurentiis</author>"
+                    dataset+="<year>2005</year>"
+                dataset+="</book>"
+                dataset+="<book>"
+                    dataset+="<title>HTML and Javascript</title>"
+                    dataset+="<author>Tom</author>"
+                    dataset+="<year>2023</year>"
+                dataset+="</book>"
+                dataset+="<book>"
+                    dataset+="<title>AngulaJS</title>"
+                    dataset+="<author>Peter</author>"
+                    dataset+="<year>2022</year>"
+                dataset+="</book>"
+            dataset+="</bookstore>"
+        </script>
+    </head>
+    <body>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody id="bookbody">
+
+            </tbody>
+        </table>
+        <script type="text/javascript">
+            bookbody = document.getElementById("bookbody");
+            parser = new DOMParser();
+            xmlDoc = parser.parseFromString(dataset, "text/xml");
+            books = xmlDoc.getElementsByTagName("book");
+
+            for (i = 0; i < books.length; i++) {
+                book = books[i];
+                title=book.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                author=book.getElementsByTagName("author")[0].childNodes[0].nodeValue;
+                year=book.getElementsByTagName("year")[0].childNodes[0].nodeValue;
+                
+                tr=document.createElement("tr");
+                td=document.createElement("td");
+                td.innerText=title;
+                tr.appendChild(td);
+
+                td=document.createElement("td");
+                td.innerText=author;
+                tr.appendChild(td);
+
+                td=document.createElement("td");
+                td.innerText=year;
+                tr.appendChild(td);
+
+                bookbody.appendChild(tr);
+            }
+
+        </script>
+    </body>
+</html>

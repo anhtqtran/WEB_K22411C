@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+        <script type="text/javascript">
+            function doiHinh(link) {
+                // Lấy phần tử hình ảnh
+                img = document.getElementById("myimg");
+                img.setAttribute("src", link);
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" onclick="doiHinh('img/1.png')">Hình 1</button>
+        <button type="button" onclick="doiHinh('img/2.png')">Hình 2</button>
+        <img src="" alt="Chưa có hình" width="200" height="200" id="myimg">
+    </body>
+</html>

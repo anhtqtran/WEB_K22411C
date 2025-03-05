@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Thông tin sinh viên</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        var txt = "<sinhvien>";
+        txt += "<mssv>K1674000</mssv>";
+        txt += "<hoTen>Hồ Văn Đồ</hoTen>";
+        txt += "<ngaySinh>2/7/1997</ngaySinh>";
+        txt += "<gioiTinh>Nam</gioiTinh>";
+        txt += "</sinhvien>";
+
+        function loadStudentInfo() {
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(txt, "text/xml");
+
+            var mssv = xmlDoc.getElementsByTagName("mssv")[0].childNodes[0].nodeValue;
+            var hoTen = xmlDoc.getElementsByTagName("hoTen")[0].childNodes[0].nodeValue;
+            var ngaySinh = xmlDoc.getElementsByTagName("ngaySinh")[0].childNodes[0].nodeValue;
+            var gioiTinh = xmlDoc.getElementsByTagName("gioiTinh")[0].childNodes[0].nodeValue;
+
+            document.getElementById("mssv").innerText = mssv;
+            document.getElementById("hoTen").innerText = hoTen;
+            document.getElementById("ngaySinh").innerText = ngaySinh;
+            document.getElementById("gioiTinh").innerText = gioiTinh;
+        }
+
+        window.onload = function() {
+            loadStudentInfo();
+        };
+    </script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Chi tiết thông tin sinh viên</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Mã số sinh viên:</td>
+                <td id="mssv"></td>
+            </tr>
+            <tr>
+                <td>Họ tên:</td>
+                <td id="hoTen"></td>
+            </tr>
+            <tr>
+                <td>Ngày sinh:</td>
+                <td id="ngaySinh"></td>
+            </tr>
+            <tr>
+                <td>Giới tính:</td>
+                <td id="gioiTinh"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

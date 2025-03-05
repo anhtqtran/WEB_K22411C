@@ -1,0 +1,28 @@
+#customers {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#customers td, #customers th {
+    font-size: 13pt;
+    border: 1px solid #98bf21;
+    padding: 3px 7px 2px 7px;
+}
+
+#customers th {
+    font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #a7c942;
+    color: white;
+}
+
+#customers tr:nth-child(even) {
+    background-color: #edfbc4;
+}
+
+#customers tr:nth-child(odd) {
+    background-color: #ffffff;
+}

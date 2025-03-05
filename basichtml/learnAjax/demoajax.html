@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+        <script type="text/javascript">
+            function callAjax() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "data.xml", true);
+                xhr.send();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                         loadBooks(xhr.responseXML);    
+                    }
+                }
+            }
+            function loadBooks(xmlDoc) {
+                bookbody = document.getElementById("bookbody");
+                books = xmlDoc.getElementsByTagName("book");
+                for (i = 0; i < books.length; i++) {
+                    book = books[i];
+                    title = book.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                    author = book.getElementsByTagName("author")[0].childNodes[0].nodeValue;
+                    year = book.getElementsByTagName("year")[0].childNodes[0].nodeValue;
+                    tr = document.createElement("tr");
+                    bookbody.appendChild(tr);
+
+                    td = document.createElement("td");
+                    td.innerText = title;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerText = author;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerText = year;
+                    tr.appendChild(td);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" onclick="callAjax()">Load books</button>
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>Title</td>
+                    <td>Author</td>
+                    <td>Year</td>
+            </thead>
+            <tbody id="bookbody">
+            </tbody>
+        </table>
+    </body>
+</html>

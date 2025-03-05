@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <style>
+            thead,tfoot{
+                background-color: blue;
+            }
+            tbody tr:nth-child(odd) {
+                background-color: whitesmoke;
+            }
+            tbody tr:nth-child(even) {
+                background-color: pink;
+            }
+            tbody tr:hover {
+                background-color: darkcyan;
+            }
+            tr:hover{
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Mã</th>
+                <th>Tên</th>
+                <th>Giá</th>
+                <th>Hình ảnh</th>
+            </tr>
+            </thead>
+            <tr>
+                <td>SP1</td>
+                <td>Coca</td>
+                <td>15</td>
+                <td><img src="/LearnTable/img/coca.jpg" width="50" height="50"></td>
+            </tr>
+            <tr>
+                <td>SP2</td>
+                <td>Pepsi</td>
+                <td>18</td>
+                <td><img src="/LearnTable/img/pepsi.jpg" width="50" height="50"></td>
+            </tr>
+            <tr>
+                <td>SP3</td>
+                <td>Aqua</td>
+                <td>17</td>
+                <td><img src="/LearnTable/img/aqua.jpg" width="50" height="50"></td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+
+hr{
+    margin: 20px 0;
+}
+
+label {
+    padding-right: 20px
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+#blue {
+    background-color: blue;
+}
+#yellow {
+    background-color: yellow;
+}
+#red {
+    background-color: red;
+}
+#green {
+    background-color: green;
+}
+#purple {
+    background-color: rgb(231, 148, 231);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+thead {
+    background-color: blue;
+    color: white;
+}
+.highlight {
+    background-color: yellow;
+}

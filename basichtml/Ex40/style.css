@@ -1,0 +1,54 @@
+.container {
+    border-collapse: collapse;
+    border-bottom: 3px solid blue;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+.title {
+    font-size: 25pt;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 2px 3px 5px black;
+    color: white;
+    background-color: orange;
+}
+.link {
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+.content {
+    width: 230px;
+    padding: 5px;
+    border: 3px solid blue;
+    margin: 15px 0 5px 5px;
+    font-family: Arial, Helvetica, sans-serif
+}
+#quick {
+    background-color: blue;
+    color: white;
+    word-spacing: 5px;
+    letter-spacing: 3px;
+    text-align: center;
+}
+#quick a:link {
+    text-decoration: solid;
+}
+table tr td a:link{
+    text-decoration: none;
+}
+table tr td a:visited{
+    text-decoration: none;
+    color: black;
+}
+table tr td a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+table tr td p {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    color: blue;
+    font-weight: bolder;
+    font-size: 30pt;
+}

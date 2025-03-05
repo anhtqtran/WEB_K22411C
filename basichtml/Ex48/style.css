@@ -1,0 +1,87 @@
+body{
+    background-color: rgba(99, 198, 248, 0.658);
+}
+.container{
+    width: 700px;
+    margin: 0 auto;
+}
+.header {
+    text-align: center;
+    margin-bottom: 0; 
+}
+.header p {
+    margin: 0;
+}
+form{
+    margin-top: 0;
+    padding: 0px;
+}
+
+.form_row {
+    display: flex;
+    margin: 5px 0;
+}
+label{
+    margin-right: 10px;
+    white-space: nowrap;
+}
+.form_row label:first-child {
+    display: inline-block;
+    text-align: left;
+    margin-right: 100px;
+    min-width: 100px
+}
+
+.form_row input {
+    padding: 2px;
+    margin-right: 10px;
+}
+ td{
+    white-space: nowrap;
+ }
+
+#firstname{
+    width: 150px
+}
+#lastname{
+    width: 150px
+}
+#address1, #address2
+{
+    width: 270px
+}
+#city{
+    width: 170px
+}
+#state{
+    width: 50px
+}
+#zip{
+    width: 50px
+}
+#country{
+    width: 170px
+}
+#product{
+    width: 150px
+}
+#date, #serial{
+    width: 150px
+}
+table tr td{
+    width: 150px;
+    text-align: left;
+}
+
+#system_table {
+    margin-left: -90px;
+}
+
+#comments{
+    margin-right: 100px;
+    min-width: 100px
+}
+
+.form_button{
+    text-align: center;
+}

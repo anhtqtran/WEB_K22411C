@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+        <script type="text/javascript">
+            function addProduct() {
+                tbody = document.getElementById("tablebody");
+                tr=document.createElement("tr");
+                tdProductId=document.createElement("td");
+                tdProductId.innerHTML=frmProduct.productid.value;
+                tr.appendChild(tdProductId);
+
+                tdProductName=document.createElement("td");
+                tdProductName.innerHTML=frmProduct.productname.value;
+                tr.appendChild(tdProductName);
+
+                tdUnitPrice=document.createElement("td");
+                tdUnitPrice.innerHTML=frmProduct.unitprice.value;
+                tr.appendChild(tdUnitPrice);
+
+                tdimg=document.createElement("td");
+                img=document.createElement("img");
+                img.setAttribute("src","img/remove.png");
+                img.setAttribute("width","27");
+                img.setAttribute("height","27");
+                img.setAttribute("style","cursor:pointer");
+                img.setAttribute("title","Click to remove this product");
+                img.onclick=function()
+                {
+                    tbody.removeChild(this.parentElement.parentElement);
+                }
+
+                tdimg.appendChild(img);
+                tr.appendChild(tdimg);
+
+                tbody.appendChild(tr);
+            }
+
+        </script>
+    </head>
+    <body>
+        <form name="frmProduct">
+            <table border="1">
+                <tr>
+                    <td>Product ID: </td>
+                    <td><input type="text" id="productid"></td>
+                </tr>
+                <tr>
+                    <td>Product Name: </td>
+                    <td><input type="text" id="productname"></td>
+                </tr>
+                <tr>
+                    <td>Unit Price: </td>
+                    <td><input type="text" id="unitprice"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <button type="button" onclick="addProduct()">Add Product</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <table border="1">
+            <caption>List Product: </caption>
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Unit Price</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">Designed by tèo</td>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+</html>

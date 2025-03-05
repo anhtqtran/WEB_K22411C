@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+    </head>
+    <body>
+        <div id="titleholder"></div>
+        <script type="text/javascript">
+           //1: truy xuất id
+            div=document.getElementById("titleholder");
+            //2: tạo html element
+            a=document.createElement("a");
+            //3: thiết lập yhoong số cho thuộc tính
+            a.innerText="https://www.tranduythanh.com";
+            a.setAttribute("style","color:blue;font-size:20px");
+            a.setAttribute("href","https://tranduythanh.com");
+            a.setAttribute("target","_blank");
+           //4: đưa html element lên web
+            div.appendChild(a); 
+        </script>
+    </body>
+</html>

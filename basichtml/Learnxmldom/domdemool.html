@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Demo Lo</title>
+        <script type="text/javascript">
+            var dataset = ["cà phê", "trà sữa", "nước ngọt", "nước lọc"];
+        </script>
+    </head>
+    <body>
+        <ol id="myol">
+
+        </ol>
+        <script type="text/javascript">
+            //1: truy xuất id
+            ol = document.getElementById("myol");
+            for ( i = 0; i < dataset.length; i++)
+             {
+                item=dataset[i];
+                //2: tạo html element
+                li = document.createElement("li");
+                //3: thiết lập yhoong số cho thuộc tính
+                li.innerText = item;
+                //4: đưa html element lên web
+                ol.appendChild(li);
+            }
+        </script>
+    </body>
+</html>

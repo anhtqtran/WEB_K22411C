@@ -1,0 +1,123 @@
+<html>
+<head>
+    <title>Hiển thị Sách Môn Học</title>
+    <style>
+        table {
+            width: 500px;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td input {
+            width: 95%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+        tbody #bookTable tr:nth-child(odd) {
+        background-color: #ffffff; /* Màu xám */
+        }
+        tbody #bookTable tr:nth-child(even) {
+        background-color: #f2f2f2; /* Màu xám */
+        }
+
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Nhập Mã:</td>
+            <td><input type="number" id="inputMaSinhVien" placeholder="Nhập mã sinh viên"></td>
+        </tr>
+        <tr>
+            <td>Nhập Tên:</td>
+            <td><input type="text" id="inputTenSinhVien" placeholder="Nhập tên sinh viên"></td>
+        </tr>
+        <tr>
+            <td>Mã và Tên:</td>
+            <td id="maVaTen"></td>
+        </tr>
+        <tr>
+            <td colspan="2">Danh sách Sách đang mượn:</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mã Sách</th>
+                            <th>Tên Sách</th>
+                            <th>Số Trang</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookTable">
+                        <tr>
+                            <td colspan="3"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        const sinhvien = {
+            Ma: 1,
+            Ten: 'Trần Duy Thanh',
+            Sachs: [
+                { Ma: 'S1', Ten: 'Hồng Lâu Mộng', Trang: 100 },
+                { Ma: 'S2', Ten: 'Tây Du Ký', Trang: 200 },
+                { Ma: 'S3', Ten: 'Tam Quốc Chí', Trang: 90 },
+                { Ma: 'S4', Ten: 'Bích Huyết Kiếm', Trang: 70 },
+                { Ma: 'S5', Ten: 'Anh Hùng Xạ Điêu', Trang: 1000 },
+                { Ma: 'S6', Ten: 'Thần Điêu Đại Hiệp', Trang: 500 },
+                { Ma: 'S7', Ten: 'Tần Thủy Hoàng', Trang: 600 },
+                { Ma: 'S8', Ten: 'Chiến Quốc', Trang: 400 },
+                { Ma: 'S9', Ten: 'Hán Sở Tranh Hùng', Trang: 300 },
+                { Ma: 'S10', Ten: 'Bảo Đao', Trang: 700 }
+            ]
+        };
+
+        document.getElementById("inputTenSinhVien").addEventListener("input", hienThiThongTin);
+        document.getElementById("inputMaSinhVien").addEventListener("input", hienThiThongTin);
+
+        function hienThiThongTin() {
+            const maSinhVien = document.getElementById("inputMaSinhVien").value.trim();
+            const tenSinhVien = document.getElementById("inputTenSinhVien").value.trim();
+
+            if (maSinhVien == sinhvien.Ma && tenSinhVien === sinhvien.Ten) {
+                document.getElementById("maVaTen").textContent = `${maSinhVien} - ${tenSinhVien}`;
+                const bookTable = document.getElementById("bookTable");
+                bookTable.innerHTML = "";
+
+                const fragment = document.createDocumentFragment();
+                sinhvien.Sachs.forEach(sach => {
+                    const row = document.createElement("tr");
+                    ["Ma", "Ten", "Trang"].forEach(key => {
+                        const cell = document.createElement("td");
+                        cell.textContent = sach[key];
+                        row.appendChild(cell);
+                    });
+                    fragment.appendChild(row);
+                });
+                bookTable.appendChild(fragment);
+            } else {
+                document.getElementById("maVaTen").textContent = "";
+                document.getElementById("bookTable").innerHTML = "<tr><td colspan='3'>Thông tin không hợp lệ</td></tr>";
+            }
+        }
+    </script>
+</body>
+</html>

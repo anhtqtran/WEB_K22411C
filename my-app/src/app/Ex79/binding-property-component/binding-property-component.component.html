@@ -1,0 +1,12 @@
+<div>
+    <h2>Cách 1: Binding thuộc tính 'name' bằng []</h2>
+    <input type="text" [value]="name">
+    <p>Giá trị của name: <b>{{name}}</b></p>
+  </div>
+  
+  <div>
+    <h2>Cách 2: Binding thuộc tính 'email' bằng {{email}}</h2>
+    <p>Email: <b>{{email}}</b></p>
+    <input type="email" [value]="email" [disabled]="isDisabled">
+    <p>Trạng thái isDisabled: <b>{{isDisabled}}</b></p>
+  </div>

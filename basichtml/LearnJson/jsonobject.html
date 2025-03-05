@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết sản phẩm</title>
+</head>
+<body>
+    <h2>Thông tin sản phẩm</h2>
+    <table border="1">
+        <tr>
+            <td>Tên sản phẩm:</td>
+            <td id="tdten"></td>
+        </tr>
+        <tr>
+            <td>Giá sản phẩm:</td>
+            <td id="tdgia"></td>
+        </tr>
+        <tr>
+            <td>Hình sản phẩm:</td>
+            <td>
+                <img id="imghinh" width="150" height="150" alt="Hình sản phẩm" />
+            </td>
+        </tr>
+    </table>
+    <script>
+        // Đối tượng sản phẩm mẫu
+        const p = {
+            id: "SP001",
+            name: "Laptop Dell Inspiron",
+            price: "20,000,000 VND",
+            image: "1.png" // Đảm bảo file hình ảnh có trong thư mục `images`
+        };
+
+        // Hàm tải chi tiết sản phẩm
+        function tai_chitiet_sanpham() {
+            // Gán thông tin sản phẩm vào các phần tử HTML
+            document.getElementById("tdten").innerText = p.name;
+            document.getElementById("tdgia").innerText = p.price;
+
+            const imghinh = document.getElementById("imghinh");
+            imghinh.setAttribute("src", "images/" + p.image); // Đường dẫn hình ảnh
+            imghinh.setAttribute("alt", "Không thể hiển thị hình ảnh"); // Text thay thế nếu hình ảnh không tải được
+        }
+
+        // Gọi hàm để tải chi tiết sản phẩm ngay khi trang được tải
+        tai_chitiet_sanpham();
+    </script>
+</body>
+</html>

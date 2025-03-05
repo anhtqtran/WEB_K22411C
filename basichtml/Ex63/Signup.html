@@ -1,0 +1,207 @@
+<html>
+    <head>
+        <title>Đăng ký thành viên</title>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            // Tải dữ liệu cho droplist
+            function loadDateDropdowns() {
+                const daySelect = document.getElementById('day');
+                const monthSelect = document.getElementById('month');
+                const yearSelect = document.getElementById('year');
+        
+                // Ngày
+                for (let i = 1; i <= 31; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i;
+                    daySelect.appendChild(option);
+                }
+        
+                // Tháng
+                for (let i = 1; i <= 12; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i;
+                    monthSelect.appendChild(option);
+                }
+        
+                // Năm
+                const currentYear = new Date().getFullYear();
+                for (let i = currentYear; i >= 1900; i--) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i;
+                    yearSelect.appendChild(option);
+                }
+            }
+        
+            // Đăng ký
+            function register() {
+                const name = document.getElementById('name').value;
+
+                const email = document.getElementById('email').value;
+
+                const day = document.getElementById('day').value;
+
+                const month = document.getElementById('month').value;
+
+                const year = document.getElementById('year').value;
+
+                const gender = document.querySelector('input[name="gender"]:checked');
+
+                const hobby = document.querySelectorAll('input[name="hobby"]:checked');
+                
+                const color = document.querySelector('input[name="color"]:checked');
+
+                // Kiểm tra điền đầy đủ thông tin
+                if (!name || !email || !day || !month || !year || !gender || hobby.length === 0 || !color) {
+                    alert("Vui lòng điền đầy đủ thông tin 😁");
+                    return;
+                }
+                
+                // Kiểm tra email hợp lệ
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    alert("Vui lòng điền email hợp lệ 🗿");
+                    return;
+                }
+                // Kiểm tra ngày sinh hợp lệ
+                if ( year < 1970 || year > 2023) {
+                    alert("Vui lòng điền ngày sinh hợp lệ 🗿");
+                    return;
+                }
+        
+                // Thêm thông tin vào bảng
+                const tableBody = document.getElementById('infoTable').getElementsByTagName('tbody')[0];
+                const newRow = tableBody.insertRow();
+                newRow.insertCell(0).textContent = name;
+                newRow.insertCell(1).textContent = email;
+                newRow.insertCell(2).textContent = `${day}/${month}/${year}`;
+                newRow.insertCell(3).textContent = gender.value;
+                newRow.insertCell(4).textContent = Array.from(hobby).map(hobby => hobby.value).join(', ');
+                newRow.insertCell(5).textContent = color.value;
+        
+                // Thêm sự kiện mouse over và mouse out
+                newRow.onmouseover = function() {
+                    this.classList.add('highlight');
+                };
+                newRow.onmouseout = function() {
+                    this.classList.remove('highlight');
+                };
+            }
+        
+            // Xóa dữ liệu trên Form
+            function clearForm() {
+                document.getElementById('registrationForm').reset();
+                document.getElementById('name').focus();
+            }
+        
+            // Tải dropdown khi trang được tải
+            window.onload = loadDateDropdowns;
+        </script>
+    </head>
+    <body>
+        <h1>Đăng ký thành viên</h1>
+        <hr>
+        <form id="registrationForm">
+            <div>
+                <label for="name">Tên(*)</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div>
+                <label for="date">Ngày sinh(*)</label>
+                <label for="day">Ngày: </label>
+                <select id="day" name="day"></select>
+                <label for="month">Tháng: </label>
+                <select id="month" name="month"></select>
+                <label for="year">Năm: </label>
+                <select id="year" name="year"></select>
+            </div>
+
+            <div>
+                <label for="gender">Giới tính(*)</label>
+                <input type="radio" id="male" name="gender" value="Nam">
+                <label for="male">Nam</label>
+                <input type="radio" id="female" name="gender" value="Nữ">
+                <label for="female">Nữ</label>
+            </div>
+
+            <div>
+                <label for="email">Email(*)</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <br>
+            <div>
+                Sở thích của bạn:
+                <br>
+                <input type="checkbox" id="shopping" name="hobby" value="Mua sắm">
+                <label for="shopping">Mua sắm</label> <br>
+
+                <input type="checkbox" id="travel" name="hobby" value="Du lịch">
+                <label for="travel">Du lịch</label><br>
+
+                <input type="checkbox" id="chatting" name="hobby" value="Tán gẫu">
+                <label for="chatting">Tán gẫu</label> <br>
+
+                <input type="checkbox" id="reading" name="hobby" value="Đọc sách">
+                <label for="reading">Đọc sách</label><br>
+
+                <input type="checkbox" id="music" name="hobby" value="Nghe nhạc">
+                <label for="music">Nghe nhạc</label><br>
+            </div>
+
+            <div>
+                Màu yêu thích của bạn:
+                <br>
+                <input type="radio" id="blue" name="color" value="Màu xanh da trời">
+                <label for="blue" id="blue">Màu xanh da trời</label> <br>
+
+                <input type="radio" id="red" name="color" value="Màu đỏ">
+                <label for="red" id="red">Màu đỏ</label> <br>
+
+                <input type="radio" id="yellow" name="color" value="Màu vàng">
+                <label for="yellow" id="yellow">Màu vàng</label> <br>
+
+                <input type="radio" id="green" name="color" value="Màu xanh lá cây">
+                <label for="green" id="green">Màu xanh lá cây</label> <br>
+
+                <input type="radio" id="purple" name="color" value="Màu tím">
+                <label for="purple" id="purple">Màu tím</label> <br>
+            </div>
+            <br>
+            <div>
+                <button type="button" onclick="register()">Đăng ký</button>
+                <button type="button" onclick="clearForm()">Tiếp</button>
+            </div>
+        </form>
+        
+        <table id="infoTable">
+            <thead>
+                <tr>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Ngày sinh</th>
+                    <th>Giới tính</th>
+                    <th>Sở thích</th>
+                    <th>Màu yêu thích</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+    
+
+

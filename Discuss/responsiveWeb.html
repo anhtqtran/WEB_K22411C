@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <h1>1. Viewport Unit Variants (`lvh`, `svh`, `dvh`)</h1>
+    <p>📢 Khu vực bên dưới sẽ hiển thị toàn màn hình.</p>
+    <button onclick="togglePopup('popup-lvh')">🔄 Hiện popup `lvh`</button>
+    <button onclick="togglePopup('popup-svh')">🔄 Hiện popup `svh`</button>
+    <button onclick="togglePopup('popup-dvh')">🔄 Hiện popup `dvh`</button>
+
+    <div id="overlay" class="overlay" onclick="closePopup()"></div>
+
+    <div id="popup-lvh" class="popup lvh">
+        <h2>Popup 100lvh</h2>
+        <p>Chiều cao tối đa có thể có.</p>
+        <button onclick="closePopup()">Đóng</button>
+    </div>
+
+    <div id="popup-svh" class="popup svh">
+        <h2>Popup 100svh</h2>
+        <p>Chiều cao nhỏ nhất khi có thanh điều hướng.</p>
+        <button onclick="closePopup()">Đóng</button>
+    </div>
+
+    <div id="popup-dvh" class="popup dvh">
+        <h2>Popup 100dvh</h2>
+        <p>Chiều cao động, thay đổi theo thực tế.</p>
+        <button onclick="closePopup()">Đóng</button>
+    </div>
+
+
+    <h1>2. Aspect-ratio + clamp()</h1>
+    <p>📌 Video luôn giữ đúng tỷ lệ, không bị méo.</p>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/RojwXNJZYHg" allowfullscreen></iframe>
+    </div>
+
+    <h1>3. Dark Mode với `prefers-color-scheme`</h1>
+    <button onclick="toggleDarkMode()">🌙 Chuyển Dark Mode</button>
+    <div class="dark-mode-demo">
+        <h2>Giao diện Dark Mode</h2>
+        <p>Nền sẽ tự động thay đổi theo chế độ hệ thống.</p>
+    </div>
+
+    <h1>4. Scroll-Driven Animations API</h1>
+    <p>📌 Cuộn xuống để thấy hiệu ứng.</p>
+    <div class="scroll-section">
+        <div class="scroll-box">Nội dung xuất hiện khi cuộn</div>
+        <div class="scroll-box">Hiệu ứng mượt mà nhờ CSS</div>
+        <div class="spacer"></div>
+    </div>
+</body>
+</html>

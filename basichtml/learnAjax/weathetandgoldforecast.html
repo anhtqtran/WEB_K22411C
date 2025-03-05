@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>Dự báo thời tiết</title>
+
+</head>
+<body>
+    <h3>Thông tin dự báo thời tiết</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Tên địa điểm</th>
+                <th>Nhiệt độ</th>
+                <th>Mây</th>
+                <th>Biểu tượng</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyweather">
+            <!-- Dữ liệu thời tiết sẽ được chèn vào đây -->
+        </tbody>
+    </table>
+
+    <script>
+        const api = "https://webapi.dantri.com.vn/misc";
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", api, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const jsondata = xhr.responseText;
+                const jsonObject = JSON.parse(jsondata);
+                hienthi_thoitiet(jsonObject);
+            } else if (xhr.readyState === 4) {
+                console.error("Không thể tải dữ liệu từ API.");
+            }
+        };
+
+        function hienthi_thoitiet(jsonObject) {
+            const weathers = jsonObject.weathers;
+            const tbodyweather = document.getElementById("tbodyweather");
+
+            for (let i = 0; i < weathers.length; i++) {
+                const weather = weathers[i];
+
+                const tr = document.createElement("tr");
+
+                // Cột tên địa điểm
+                let td = document.createElement("td");
+                td.innerText = weather.name;
+                tr.appendChild(td);
+
+                // Cột nhiệt độ
+                td = document.createElement("td");
+                td.innerText = weather.temperature + "°C";
+                tr.appendChild(td);
+
+                // Cột mây
+                td = document.createElement("td");
+                td.innerText = weather.clouds;
+                tr.appendChild(td);
+
+                // Cột biểu tượng
+                td = document.createElement("td");
+                const img = document.createElement("img");
+                img.setAttribute("src", "http://openweathermap.org/img/w/" + weather.icon + ".png");
+                img.setAttribute("alt", "Biểu tượng thời tiết");
+                td.appendChild(img);
+                tr.appendChild(td);
+
+                tbodyweather.appendChild(tr);
+            }
+        }
+    </script>
+</body>
+</html>

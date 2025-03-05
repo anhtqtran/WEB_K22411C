@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Xác định tọa độ</title>
+    </head>
+    <body>
+        <img src="/Ex29/hinh/Map.jpg" id="myImage">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+        $("#myImage").click(function(event) {
+            var x = event.pageX - $(this).offset().left;
+            var y = event.pageY - $(this).offset().top;
+            alert("Tọa độ: (" + x + ", " + y + ")");
+        });
+        </script>
+    </body>
+</html>

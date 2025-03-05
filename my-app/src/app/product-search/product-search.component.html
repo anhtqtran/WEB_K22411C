@@ -1,0 +1,26 @@
+<p>
+    Min price: <input type="number" name="minprice" id="minprice" [(ngModel)]="minprice">
+    Max price: <input type="number" name="maxprice" id="maxprice" [(ngModel)]="maxprice">
+    
+    <button (click)="searchProduct()">Search</button>
+</p>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Hình</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of products">
+            <td>{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.price}}</td>
+            <td>
+                <img src="assets/images/{{p.image}}" width="100px" >
+            </td>
+        </tr>
+    </tbody>
+</table>

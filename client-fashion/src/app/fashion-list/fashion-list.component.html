@@ -1,0 +1,59 @@
+<div class="container mt-4">
+  <!-- Header and Search/Filter -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="fw-bold text-uppercase">Welcome to Vogue Magazine</h1>
+    <div class="filter-section d-flex align-items-center gap-3">
+      <input
+        type="text"
+        [(ngModel)]="searchStyle"
+        (keyup.enter)="filterByStyle()"
+        placeholder="Search by Style..."
+        class="form-control"
+      />
+      <select [(ngModel)]="selectedStyle" (change)="filterByStyle()" class="form-select">
+        <option value="">All Styles</option>
+        <option *ngFor="let style of allStyles" [value]="style">{{ style }}</option>
+      </select>
+      <button (click)="filterByStyle()" class="btn btn-primary">Search</button>
+      <p class="text-danger mt-2" *ngIf="errMessage">{{ errMessage }}</p>
+      <p class="text-muted mt-2" *ngIf="isLoading">Loading...</p>
+    </div>
+  </div>
+
+  <!-- Fashion Styles - Vertical Sections with Horizontal Products -->
+  <div *ngIf="!isLoading && !errMessage" class="styles-container">
+    <div *ngFor="let style of styles" class="style-section mb-5">
+      <h2 class="fw-bold text-uppercase mb-4 text-center">{{ style }}</h2>
+      <hr>
+      <div class="fashion-row d-flex flex-nowrap overflow-x-auto gap-3">
+        <div
+          class="fashion-item flex-shrink-0"
+          *ngFor="let fashion of groupedFashions[style]"
+          (click)="showDetail(fashion)"
+        >
+          <div class="card h-100 shadow-sm">
+            <img
+              [src]="fashion.fashion_image"
+              class="card-img-top fashion-image"
+              [alt]="fashion.fashion_subject"
+              loading="lazy"
+            />
+            <div class="card-body">
+              <h5 class="card-title fashion-title">{{ fashion.fashion_subject }}</h5>
+              <!-- <p class="card-text text-muted" *ngIf="fashion.fashion_detail">
+                {{ fashion.fashion_detail | slice:0:50 }}{{ fashion.fashion_detail.length > 50 ? '...' : '' }}
+              </p> -->
+              <!-- Giá sản phẩm (tùy chọn, nếu có) -->
+              <!-- <p class="card-text" *ngIf="fashion.price">{{ fashion.price | currency }}</p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fallback when no data -->
+  <div *ngIf="!isLoading && styles.length === 0 && !errMessage" class="text-center mt-5">
+    <p class="text-muted">No fashion items available.</p>
+  </div>
+</div>

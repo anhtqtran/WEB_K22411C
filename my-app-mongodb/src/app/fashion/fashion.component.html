@@ -1,0 +1,44 @@
+<!-- fashion.component.html -->
+<div>
+  <h2>Tìm kiếm Fashion</h2>
+  <input type="text" [(ngModel)]="searchId" placeholder="Nhập ID Fashion">
+  <button (click)="onSearch()">Tìm kiếm</button>
+
+  <!-- Dropdown lọc theo style -->
+  <label for="styleFilter">Lọc theo Style: </label>
+  <select [(ngModel)]="selectedStyle" (change)="filterByStyle()" id="styleFilter">
+    <option value="">Tất cả</option>
+    <option value="STREET STYLE">STREET STYLE</option>
+    <option value="TRENDS">TRENDS</option>
+    <option value="CELEBRITY STYLE">CELEBRITY STYLE</option>
+    <option value="Kids Style">KIDS STYLE</option>
+    <option value="Y2K">Y2K</option>    <option value="HIPPIE">HIPPIE</option>
+    <!-- Thêm các style khác tùy theo dữ liệu của bạn -->
+  </select>
+</div>
+
+<table border="1">
+  <tr>
+    <th>Id</th>
+    <th>Fashion Subject</th>
+    <th>Fashion Detail</th>
+    <th>Image</th>
+  </tr>
+  <tbody>
+    <tr *ngFor="let fashion of fashions">
+      <td>{{ fashion._id }}</td>
+      <td>{{ fashion.style}}</td>
+      <td>{{ fashion.fashion_subject }}</td>
+      <td>{{ fashion.fashion_detail }}</td>
+      <td>
+        <a [routerLink]="['/fashion-detail', fashion._id]">
+          <img [src]="fashion.fashion_image" width="100px" height="100px" alt="Fashion Image" style="cursor: pointer;">
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="errMessage">
+  <p style="color: red;">{{ errMessage }}</p>
+</div>

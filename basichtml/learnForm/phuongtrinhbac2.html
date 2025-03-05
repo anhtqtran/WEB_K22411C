@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+        <script>
+            function giai_phuongtrinh_bac2() {
+                // Lấy giá trị từ các ô input
+                // var hsa = formptb2.hesoa.value;
+                // var hsb = formptb2.hesob.value;
+                // var hsc = formptb2.hesoc.value;
+
+                hsa = formptb2.hesoa.value
+                hsb = formptb2.hesob.value
+                hsc = formptb2.hesoc.value
+
+        
+                // Chuyển đổi chuỗi sang số (vẫn dùng eval)
+                hsa = eval(hsa);
+                hsb = eval(hsb);
+                hsc = eval(hsc);
+        
+        
+                var nghiem = "";
+        
+                if (hsa == 0) {
+                    if (hsb == 0) {
+                        nghiem = "Phương trình vô số nghiệm";
+                    } else {
+                        nghiem = "Phương trình có nghiệm duy nhất: X= " + (-hsc / hsb);
+                    }
+                } else {
+                    var delta = hsb * hsb - 4 * hsa * hsc;
+                    if (delta > 0) {
+                        nghiem = "Phương trình có hai nghiệm phân biệt: x1 = " + (-hsb + Math.sqrt(delta)) / (2 * hsa) + ", x2 = " + (-hsb - Math.sqrt(delta)) / (2 * hsa);
+                    } else if (delta == 0) {
+                        nghiem = "Phương trình có nghiệm kép: x= " + (-hsb / (2 * hsa));
+                    } else {
+                        nghiem = "phương trình vô nghiệm";
+                    }
+                }
+        
+                // Truy xuất tới thẻ HTML thông qua ID
+                var tdketqua = document.getElementById("ketqua");
+        
+                // Hiển thị kết quả
+                tdketqua.textContent = nghiem;
+            }
+        </script>
+    </head>
+    <body>
+        <form name="formptb2">
+            <table border="1">
+                <caption style="font-size: 20px;">
+                    Phương trình bậc 2
+                </caption>
+                <tbody>
+                    <tr>
+                        <td>Hệ số a:</td>
+                        <td><input type="text" name="hesoa" id="hesoa"></td>
+                    </tr>
+                    <tr>
+                        <td>Hệ số b:</td>
+                        <td><input type="text" name="hesob" id="hesob"></td>
+                    </tr>
+                    <tr>
+                        <td>Hệ số c:</td>
+                        <td><input type="text" name="hesoc" id="hesoc"></td>
+                    </tr>
+                    <tr>
+                        <td>Kết quả: </td>
+                        <td id="ketqua"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="button" value="Giải" onclick="giai_phuongtrinh_bac2()">|
+                            <input type="button" value="Tiếp">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </body>
+</html>

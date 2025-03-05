@@ -1,0 +1,47 @@
+form có 4 phương thức chính:
+    get: trả về ds dữ liệu, truy xuất dl
+    post: tạo mới dữ liệu. đẩy dữ liệu lên server
+    put: cập nhật dữ liệu
+    delete: xóa dữ liệu
+    lưu ý: đối với mk phải post
+----------
+lable, textbox, button trên form
+    lable: hiển thị tiêu đề
+         thuộc tính: for="id của textbox" => nhấn vào tiêu đề sẽ chọn textbox
+    textbox: ô nhập dữ liệu
+        thuộc tính: name, type (email, url, number,... ), value, placeholder (hind), required
+    button: nút bấm
+    type:
+        submit: gửi form
+        reset: đưa dl về ban đầu
+        normal: client xử lý
+--------------------
+fieldset: nhóm các control lại với nhau
+legend: tiêu đề của fieldset
+--------------------
+checkbox: ô chọn
+    thuộc tính: name, type, value, checked
+radio: ô chọn
+    thuộc tính: name, type="radio", value, checked
+    lưu ý:
+    - đối với checkbox hay các control khác thì đặt name và id tùy ý
+    nhưng đối với radio thì:
+    - name và id của các radio phải giống nhau. name của radio có ý nghĩa khác là gom nhóm, vd name gender, name vote. trong nhóm đso chỉ chọn 1
+----------
+combobox: ô chọn
+    thuộc tính: name, id, size, multiple
+    option: giá trị của combobox
+        thuộc tính: value, selected
+listbox: combobox có thể chọn nhiều giá trị
+    thuộc tính: name, id, size, multiple
+    option: giá trị của combobox
+        thuộc tính: value, selected
+----------
+option group: nhóm các option lại với nhau
+    thuộc tính: label
+hidden field
+    thuộc tính: type="hidden"
+    dùng để lưu trữ dl mà ko hiển thị
+file upload
+    thuộc tính: type="file"
+    lưu ý: form phải có thuộc tính enctype="multipart/form-data"

@@ -1,0 +1,53 @@
+/* Reset margin và padding */
+*{
+    margin: 0;
+    padding: 0;
+}
+/* Định dạng container */
+#container {
+    border: 1px solid blue;
+    background: gray;
+    top: 60px;
+    text-indent: 0px;
+    width: fit-content; /* để container vừa với nội dung */
+}
+/* Loại bỏ float và list-style cho ul */
+#container ul {
+    list-style: none;
+    padding: 0; /* loại bỏ padding mặc định của ul */
+}
+/* Định vị tương đối cho li, không dùng float */
+#container ul li {
+    position: relative; /* Để tạo ngữ cảnh cho menu con */
+}
+/* Định dạng link */
+#container ul li a {
+    display: block;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 3px 6px;
+}
+/* Hiệu ứng hover link */
+#container ul li a:hover {
+    color: white;
+    background: orange;
+}
+/* Định vị tuyệt đối menu con */
+#container li ul {
+    position: absolute;
+    display: none; /* ẩn ban đầu */
+    width: 10em;
+    background: #f0f0f0;
+    left: 100%; /* Xuất hiện bên phải mục cha */
+    top: 0; /* Căn chỉnh menu con theo chiều dọc */
+}
+/* Hiển thị menu con khi hover */
+#container li:hover ul {
+    display: block;
+}
+/* Định dạng các mục li con trong menu con*/
+#container ul li ul li {
+    width: 100%;
+    border: 1px solid green;
+}

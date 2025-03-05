@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CD COLLECTION</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+        }
+    </style>
+
+    <script>
+        function hienthi_CD() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "cd_catalog.xml", true);
+            xhr.send();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        var xmlDoc = xhr.responseXML;
+                        var cds = xmlDoc.getElementsByTagName("CD");
+                        var tableContent = "";
+
+                        // Lặp qua tất cả các CD và tạo nội dung cho bảng
+                        for (var i = 0; i < cds.length; i++) {
+                            var title = cds[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+                            var artist = cds[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+
+                            // Thêm một hàng mới cho mỗi CD
+                            tableContent += "<tr>" +
+                                "<td>" + artist + "</td>" +
+                                "<td>" + title + "</td>" +
+                                "</tr>";
+                        }
+
+                        // Cập nhật nội dung bảng
+                        document.getElementById("cdTable").innerHTML += tableContent;
+                    } else {
+                        console.error("Không thể tải dữ liệu XML: " + xhr.status);
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="hienthi_CD()">Get my CD collection</button>
+    <br>
+    <table border="1" id="cdTable">
+        <tr>
+            <th>Artist</th>
+            <th>Title</th>
+        </tr>
+    </table>
+</body>
+</html>

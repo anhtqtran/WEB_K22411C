@@ -1,0 +1,76 @@
+ngôn ngữ script (javascript, typescript)
+nhúng: 
+    trực tiếp (hầu như để ở thẻ head, coi coi có tương tác với thẻ không coi chừng bị null), 
+    nhúng từ 1 file khác
+---
+kiểu dl và khai báo biến
+- phân biệt chữ hoa và thường 
+- không cần ;
+-
+**lưu ý các từ khóa không nên đặt trùng 
+khai báo dùng từ khóa var trước tên biến (có thể không cần )
+kiểu dl:
+ - object
+ - string (lưu ý các ký tự đặc biệt)
+ - number
+ - boolean
+ - undefined
+ - null
+ - function
+----
+toán tử trong javascript
+    math operators:
+        %
+        ++
+        --
+    assignment operators:
+        +=
+    comparison operators:
+        ==
+    logical operators:
+        && và 
+        || hoặc
+        ! 
+        ?:
+    nối chuỗi 
+------
+nên viết hàm khi muốn tái sử dụng 
+----
+buil-in function
+    eval
+    isNaN
+    number (ép chuỗi thành số)
+----
+cấu trúc điều kiện if else
+cấu trúc switch
+---
+vòng lặp while
+---
+vòng lặp do...while
+---
+vòng lặp for
+---
+trích lọc chuỗi (tìm vị trí của chuỗi con trong chuỗi gốc)
+---
+tách chuỗi
+    split
+nối chuỗi
+    concat
+thay chuỗi
+    replace (tương tự hàm search)
+chuỗi thành in hoa/in thường
+    toUpCase/toLowerCase
+truy xuất ký tự vbaast kfi
+    charArt
+----
+đối tượng
+    math
+    date (
+        method: g...
+    )
+    array (
+        method:
+    )
+----
+class
+object

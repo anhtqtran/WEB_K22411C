@@ -1,0 +1,19 @@
+<div class="modal fade" [ngClass]="{'show d-block': fashion}" 
+     tabindex="-1" *ngIf="fashion">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{fashion.fashion_subject}}</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <img [src]="fashion.fashion_image" class="img-fluid mb-3" 
+             [alt]="fashion.fashion_subject">
+        <div [innerHTML]="fashion.fashion_detail"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

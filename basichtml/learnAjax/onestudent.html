@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+        <script>
+            function hienthi_sinhvien() {
+                var xhr =new XMLHttpRequest();
+                xhr.open("GET","dataset.xml",true);
+                xhr.send();
+                xhr.onreadystatechange=function() 
+                {
+                    if (xhr.readyState == 4 && xhr.status == 200) 
+                    {
+                    // xử lý khi load được data
+                    // alert("đọc dữ liệu XML thành công:"+xhr.responseXML)
+
+                        var xmlDoc = xhr.responseXML;
+                        masv = xmlDoc.getElementsByTagName("mssv")[0].childNodes[0].nodeValue;
+                        document.getElementById("masv").innerText = masv;
+
+                        tensv = xmlDoc.getElementsByTagName("hoTen")[0].childNodes[0].nodeValue;
+                        document.getElementById("tensv").innerText = tensv;
+
+                        ngaysinh = xmlDoc.getElementsByTagName("ngaySinh")[0].childNodes[0].nodeValue;
+                        document.getElementById("ngaysinh").innerText = ngaysinh;
+                        
+                        gioitinh = xmlDoc.getElementsByTagName("gioiTinh")[0].childNodes[0].nodeValue;
+                        document.getElementById("gioitinh").innerText = gioitinh;
+                        
+                        hinh = xmlDoc.getElementsByTagName("hinh")[0].childNodes[0].nodeValue;
+                        document.getElementById("hinh").setAttribute("src", "images/" + hinh)
+
+                    } 
+                    else 
+                    {
+                    // xử lý khi không load được data
+                    }
+                }
+            }
+
+
+        </script>
+    </head>
+    <body>
+        <h1>thông tin sinh viên</h1>
+        <table border="1">
+            <tr>
+                <td>Mã:</td>
+                <td id="masv"></td>
+            </tr>
+
+            <tr>
+                <td>Tên:</td>
+                <td id="tensv"></td>
+            </tr>
+
+            <tr>
+                <td>Ngày sinh:</td>
+                <td id="ngaysinh"></td>
+            </tr>
+
+            <tr>
+                <td>Giới tính:</td>
+                <td id="gioitinh"></td>
+            </tr>
+
+            <tr>
+                <td>Hình:</td>
+                <td>
+                    <img id="hinh" width="100" height="100">
+                </td>
+            </tr>
+        </table>
+        <button onclick="hienthi_sinhvien()">Hiển thị sinh viên</button>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+        <script type="text/javascript">
+            function giai()
+            {
+                a=document.getElementById("hsa").value
+                b=document.getElementById("hsb").value
+                a=Number(a)
+                b=Number(b)
+                kq=document.getElementById("ketqua")
+                if (a==0 && b==0)
+                {
+                    kq.innerText="Vô số nghiệm"
+                }
+                else if (a==0 && b!=0)
+                {
+                    kq.innerText="Vô nghiệm"
+                }
+                else
+                {
+                    kq.innerText=-b/a
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td colspan="2">PT BẬC 1</td>
+            </tr>
+            <TR>
+                <TD>HỆ SỐ A: </TD>
+                <TD><input type="text" id="hsa"></TD>
+            </TR>
+            <TR>
+                <TD>HỆ SỐ B: </TD>
+                <TD><input type="text" id="hsb"></TD>
+            </TR>
+            <tr>
+                <td>Kết quả: </td>
+                <td id="ketqua"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="Giải" onclick="giai()"> &nbsp;
+                    <input type="button" value="Thoát">
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

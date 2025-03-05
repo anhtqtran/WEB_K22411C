@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <title>Tiêu đề trang</title>
+        <script>
+            var dataset = [
+    {
+        "cateid": "Cate1",
+        "catename": "Tiểu thuyết kiếm hiệp",
+        "books": [
+            { "id": "p1", "name": "Book 1", "price": 100, "image": "1.png" },
+            { "id": "p2", "name": "Book 2", "price": 200, "image": "2.png" }
+        ]
+    },
+    {
+        "cateid": "Cate2",
+        "catename": "Tiểu thuyết dạng tổng tài",
+        "books": [
+            { "id": "p3", "name": "Book 3", "price": 300, "image": "3.png" },
+            { "id": "p4", "name": "Book 4", "price": 400, "image": "4.png" }
+        ]
+    }
+];
+
+        </script>
+    </head>
+    <body>
+        <h3>Danh sách Books:</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Mã sách</th>
+                    <th>Tên Sách</th>
+                    <th>Giá Sách</th>
+                    <th>Hình ảnh</th>
+                </tr>
+            </thead>
+            <tbody id="tbodysach">
+
+            </tbody>
+        </table>
+        <script>
+            function hienthi_danhsach_phan_nhom() {
+    var tbodysach = document.getElementById("tbodysach");
+    tbodysach.innerHTML = ""; // Xóa nội dung cũ
+
+    dataset.forEach(cate => {
+        // Tạo hàng tiêu đề cho danh mục
+        var trCate = document.createElement("tr");
+        var tdCate = document.createElement("td");
+        tdCate.setAttribute("colspan", "4");
+        tdCate.setAttribute("style", "background-color: yellow; font-weight: bold;");
+        tdCate.innerText = cate.cateid + " - " + cate.catename;
+        trCate.appendChild(tdCate);
+        tbodysach.appendChild(trCate);
+
+        // Tạo hàng cho từng sách trong danh mục
+        cate.books.forEach(book => {
+            var trBook = document.createElement("tr");
+
+            var tdId = document.createElement("td");
+            tdId.innerText = book.id;
+            trBook.appendChild(tdId);
+
+            var tdName = document.createElement("td");
+            tdName.innerText = book.name;
+            trBook.appendChild(tdName);
+
+            var tdPrice = document.createElement("td");
+            tdPrice.innerText = book.price;
+            trBook.appendChild(tdPrice);
+
+            var tdImage = document.createElement("td");
+            var img = document.createElement("img");
+            img.setAttribute("src", "images/" + book.image);
+            img.setAttribute("width", "100");
+            img.setAttribute("alt", "Không thấy hình");
+            tdImage.appendChild(img);
+            trBook.appendChild(tdImage);
+
+            tbodysach.appendChild(trBook);
+        });
+    });
+}
+
+// Gọi hàm hiển thị
+hienthi_danhsach_phan_nhom();
+
+            function hienthi_danhsach_cach2()
+            {
+                tbodysach=document.getElementById("tbodysach")
+                for(i=0; i<books.length;i++)
+                {
+                    b=books[i]
+                    row=document.createElement("tr")
+                    row=document.createElement("tr")
+                    td=document.createElement("td")
+                    td.innerText=b.id
+
+                    row.appendChild(td)
+                    
+                    td=document.createElement("td")
+                    td.innerText=b.name
+
+                    row.appendChild(td)
+
+                    td=document.createElement("td")
+                    td.innerText=b.price
+                    
+                    row.appendChild(td)
+                    
+                    imghinh=document.createElement("img")
+                    imghinh.setAttribute("src","images/"+b.image)
+                    imghinh.setAttribute("width","150")
+                    imghinh.setAttribute("width","150")
+                    imghinh.setAttribute("alt","Không thấy hình Thím ơi")
+                    td=document.createElement("td")
+                    td.appendChild(imghinh)
+
+                    row.appendChild(td)
+                    tbodysach.appendChild(row)
+                }
+            }
+            
+            function hienthi_danhsach_cach1()
+            {
+                tbodysach=document.getElementById("tbodysach")
+                //Dùng foreach kết hợp cú hợp Lambda Expression:
+                books.forEach(b=>{
+                    row=document.createElement("tr")
+                    td=document.createElement("td")
+                    td.innerText=b.id
+
+                    row.appendChild(td)
+                    
+                    td=document.createElement("td")
+                    td.innerText=b.name
+
+                    row.appendChild(td)
+
+                    td=document.createElement("td")
+                    td.innerText=b.price
+                    
+                    row.appendChild(td)
+                    
+                    imghinh=document.createElement("img")
+                    imghinh.setAttribute("src","images/"+b.image)
+                    imghinh.setAttribute("width","150")
+                    imghinh.setAttribute("width","150")
+                    imghinh.setAttribute("alt","Không thấy hình Thím ơi")
+                    td=document.createElement("td")
+                    td.appendChild(imghinh)
+
+                    row.appendChild(td)
+                    tbodysach.appendChild(row)
+                })
+            }
+            hienthi_danhsach_cach2()
+        </script>
+    </body>
+</html>

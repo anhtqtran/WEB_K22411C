@@ -1,0 +1,116 @@
+.container {
+  max-width: 1400px;
+}
+
+.filter-section {
+  max-width: 500px;
+}
+
+.styles-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.style-section {
+  width: 100%;
+}
+
+.fashion-row {
+  display: flex; /* Thêm display: flex; */
+  flex-direction: row; /* Thêm flex-direction: row; */
+  flex-wrap: nowrap; /* Thêm flex-wrap: nowrap; */
+  gap: 20px;
+  padding: 10px 0;
+  overflow-x: auto; /* Đảm bảo có thanh cuộn ngang khi cần */
+  -webkit-overflow-scrolling: touch; /* Cuộn mượt trên mobile */
+}
+
+.fashion-item {
+  min-width: 300px; /* Đảm bảo mỗi item có kích thước cố định, giống hình ảnh */
+  flex-shrink: 0; /* Ngăn item bị thu nhỏ */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fashion-item:hover {
+  transform: scale(1.05); /* Phóng to khi hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+.card {
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.fashion-image {
+  width: 100%;
+  height: 400px;
+  object-fit: contain; /* Thay đổi thành contain */
+  transition: opacity 0.3s ease;
+}
+
+.fashion-item:hover .fashion-image {
+  opacity: 0.9; /* Hiệu ứng mờ khi hover */
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.fashion-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch; /* Cải thiện cuộn trên mobile */
+}
+
+@media (max-width: 1200px) {
+  .fashion-image {
+    height: 350px;
+  }
+  .fashion-item {
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 992px) {
+  .fashion-image {
+    height: 300px;
+  }
+  .fashion-item {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-section {
+    max-width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fashion-image {
+    height: 250px;
+  }
+  .fashion-item {
+    min-width: 180px;
+  }
+  .fashion-title {
+    font-size: 1rem;
+  }
+}

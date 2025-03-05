@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>Employee List</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        function loadData() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var xmlDoc = this.responseXML;
+                    populateTitleDropdown(xmlDoc);
+                }
+            };
+            xhttp.open("GET", "employee.xml", true); 
+            xhttp.send();
+        }
+
+        function populateTitleDropdown(xmlDoc) {
+            var employees = xmlDoc.getElementsByTagName("employee");
+            var uniqueTitles = new Set();
+            for (var i = 0; i < employees.length; i++) {
+                var title = employees[i].getAttribute("title");
+                uniqueTitles.add(title);
+            }
+
+            var dropdown = document.getElementById("titleDropdown");
+            uniqueTitles.forEach(function(title) {
+                var option = document.createElement("option");
+                option.value = title;
+                option.text = title;
+                dropdown.appendChild(option);
+            });
+        }
+
+        function displayEmployees() {
+            var selectedTitle = document.getElementById("titleDropdown").value;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var xmlDoc = this.responseXML;
+                    displayEmployeeTable(xmlDoc, selectedTitle);
+                }
+            };
+            xhttp.open("GET", "employee.xml", true); 
+            xhttp.send();
+        }
+
+        function displayEmployeeTable(xmlDoc, selectedTitle) {
+            var employees = xmlDoc.getElementsByTagName("employee");
+            var tableBody = document.querySelector("tbody");
+            tableBody.innerHTML = ""; 
+
+            for (var i = 0; i < employees.length; i++) {
+                var title = employees[i].getAttribute("title");
+                if (title === selectedTitle) {
+                    var row = document.createElement("tr");
+                    var idCell = document.createElement("td");
+                    var nameCell = document.createElement("td");
+                    var phoneCell = document.createElement("td");
+
+                    idCell.textContent = employees[i].getAttribute("id");
+                    nameCell.textContent = employees[i].getElementsByTagName("name")[0].textContent;
+                    phoneCell.textContent = employees[i].getElementsByTagName("phone")[0].textContent;
+
+                    row.appendChild(idCell);
+                    row.appendChild(nameCell);
+                    row.appendChild(phoneCell);
+                    tableBody.appendChild(row);
+                }
+            }
+        }
+
+        window.onload = loadData;
+    </script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr> 
+                <th>Chọn Title:</th>
+                <th colspan="2">
+                    <select id="titleDropdown" onchange="displayEmployees()">
+                        <option value="">Select a title</option>
+                    </select>
+                </th>  
+            </tr>
+            <tr class="title">
+                <th>Mã Employee</th>
+                <th>Tên Employee</th>
+                <th>Phone Employee</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+</html>

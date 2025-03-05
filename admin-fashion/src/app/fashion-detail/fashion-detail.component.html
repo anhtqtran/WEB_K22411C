@@ -1,0 +1,107 @@
+<div class="container mt-4" *ngIf="fashion">
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        {{errorMessage}}
+    </div>
+
+    <!-- Title -->
+    <h2 class="mb-4">
+        {{isAdding ? 'Thêm mới Fashion' : (isEditing ? 'Sửa Fashion' : 'Chi tiết Fashion')}}
+    </h2>
+
+    <!-- Add/Edit Form -->
+    <form *ngIf="isAdding || isEditing" (ngSubmit)="save()" class="mb-4">
+        <div class="form-group mb-3">
+            <label for="fashion_subject" class="form-label">Tiêu đề:</label>
+            <input 
+                type="text" 
+                id="fashion_subject"
+                class="form-control" 
+                [(ngModel)]="fashion.fashion_subject" 
+                name="fashion_subject" 
+                required
+                placeholder="Nhập tiêu đề fashion"
+            >
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="style" class="form-label">Style:</label>
+            <input 
+                type="text" 
+                id="style"
+                class="form-control" 
+                [(ngModel)]="fashion.style" 
+                name="style" 
+                required
+                placeholder="Nhập style"
+            >
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="fashion_image" class="form-label">Hình thumbnail:</label>
+            <input 
+                type="text" 
+                id="fashion_image"
+                class="form-control" 
+                [(ngModel)]="fashion.fashion_image" 
+                name="fashion_image" 
+                required
+                placeholder="Nhập URL hình ảnh"
+            >
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label">Chi tiết:</label>
+            <ckeditor
+                [editor]="Editor"
+                [config]="editorConfig"
+                [(ngModel)]="fashion.fashion_detail"
+                name="fashion_detail"
+                (ready)="onEditorReady($event)"
+                (change)="saveEditorData($event.editor.getData())"
+            ></ckeditor>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <button type="button" class="btn btn-secondary" (click)="cancel()">Hủy</button>
+        </div>
+    </form>
+
+    <!-- Detail View -->
+    <div *ngIf="!isAdding && !isEditing" class="card">
+        <div class="card-body">
+            <div class="mb-3">
+                <strong>Tiêu đề:</strong> 
+                <span>{{fashion.fashion_subject}}</span>
+            </div>
+            
+            <div class="mb-3">
+                <strong>Style:</strong> 
+                <span>{{fashion.style}}</span>
+            </div>
+            
+            <div class="mb-3">
+                <strong>Hình:</strong>
+                <div>
+                    <img 
+                        [src]="fashion.fashion_image" 
+                        alt="Fashion thumbnail" 
+                        class="img-fluid rounded" 
+                        style="max-width: 200px;"
+                    >
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <strong>Chi tiết:</strong>
+                <div class="mt-2" [innerHTML]="fashion.fashion_detail"></div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary" (click)="isEditing = true">Chỉnh sửa</button>
+                <button class="btn btn-secondary" (click)="cancel()">Quay lại</button>
+            </div>
+        </div>
+    </div>
+</div>

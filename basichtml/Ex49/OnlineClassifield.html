@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Online Classified</title>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript">
+            function search() {
+                alert("Đang search")
+            };
+            function help() {
+                window.open("https://support.google.com/","_blank")
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <form>
+                <h2>Online Classifieds Search Form</h2>
+                <hr>
+                <div>
+                    <label>1&#10089; Search for a classified in the following sections:</label> <br>
+                    <table>
+                        <tr>
+                            <td><input type="radio" name="classified"> Employment</td>
+                            <td><input type="radio" name="classified"> Personal</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="classified"> For Sale</td>
+                            <td><input type="radio" name="classified"> Miscellaneous</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="classified"> Housing</td>
+                            <td><input type="radio" name="classified"> All of the above</td>
+                        </tr>
+                    </table>        
+                </div>
+                <div>
+                    <label>2&#10089; Search the following publications:</label> <br>
+                    <table>
+                        <tr>
+                            <td><input type="checkbox">Midwest times</td>
+                            <td><input type="checkbox">Modern News</td>
+                            <td><input type="checkbox">Employment Today</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox">Great Lakes Classifieds</td>
+                            <td><input type="checkbox">Middleton Daily</td>
+                            <td><input type="checkbox">Cashtown Daily News</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <label>3&#10089; From </label>
+                    <input type="date">
+                    <label>to</label>
+                    <input type="date">
+                </div>
+                <br>
+                <div>
+                    <label>4&#10089; Enter a few keywords to describe the classified:</label> <br>
+                    <input type="text" id="keywords">
+                </div>
+                <div>
+                    <label>5&#10089; Click one of the options below:</label> <br>
+                    <input type="image" src="Search.gif" onclick="search()">
+                    <input type="image" src="Help.gif"  onclick="help()">
+                    <input type="image" type="reset" src="Cancel.gif">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

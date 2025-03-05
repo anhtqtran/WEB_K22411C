@@ -1,0 +1,195 @@
+<html>
+<head>
+    <title>Tiêu đề trang</title>
+    <script>
+        var dataset = "<sinhviens>";
+        dataset += "<sinhvien>";
+        dataset += "<mssv>K123456789</mssv>";
+        dataset += "<hoTen>Quách Thị Bán Bún Bò</hoTen>";
+        dataset += "<ngaySinh>7/7/1997</ngaySinh>";
+        dataset += "<gioiTinh>Nữ</gioiTinh>";
+        dataset += "</sinhvien>";
+        dataset += "<sinhvien>";
+        dataset += "<mssv>K12345000</mssv>";
+        dataset += "<hoTen>Hồng Lâu Mộng</hoTen>";
+        dataset += "<ngaySinh>2/2/1992</ngaySinh>";
+        dataset += "<gioiTinh>Nam</gioiTinh>";
+        dataset += "</sinhvien>";
+        dataset += "<sinhvien>";
+        dataset += "<mssv>K1674000</mssv>";
+        dataset += "<hoTen>Hồ Văn Đồ</hoTen>";
+        dataset += "<ngaySinh>2/7/1997</ngaySinh>";
+        dataset += "<gioiTinh>Nam</gioiTinh>";
+        dataset += "</sinhvien>";
+        dataset += "</sinhviens>";
+    </script>
+    <style>
+        .detailTable {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        .detailTable td {
+            border: 1px solid #000;
+            padding: 8px;
+        }
+        /* Thêm CSS cho con trỏ chuột */
+        tr {
+            cursor: pointer; /* Thay đổi con trỏ thành hình mũi tên khi di chuột qua dòng */
+        }
+        tr:hover {
+            background-color: yellow; /* Thay đổi màu nền khi di chuột qua dòng */
+        }
+    </style>
+</head>
+<body>
+    <table id="studentTable" border="1">
+        <thead>
+            <tr>
+                <th colspan="4" style="background-color: #FFC000;" onclick="sortTable(0)">Danh sách sinh viên</th>
+            </tr>
+            <tr style="background-color: #00B050;">
+                <th onclick="sortTable(1)">Mã số sinh viên</th>
+                <th onclick="sortTable(2)">Họ tên</th>
+                <th onclick="sortTable(3)">Ngày sinh</th>
+                <th onclick="sortTable(4)">Giới tính</th>
+            </tr>
+        </thead>
+        <tbody id="tbodysinhvien">
+        </tbody>
+    </table>
+
+    <div id="detailContainer"></div>
+
+    <script>
+        var currentSortColumn = -1; // Column currently sorted
+        var currentSortDirection = 'asc'; // Current sort direction
+
+        function tai_danhsach_sinhvien() {
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(dataset, "text/xml");
+            var students = xmlDoc.getElementsByTagName("sinhvien");
+            for (var i = 0; i < students.length; i++) {
+                var sti = students[i];
+                var mssv = sti.getElementsByTagName("mssv")[0].childNodes[0].nodeValue;
+                var hoTen = sti.getElementsByTagName("hoTen")[0].childNodes[0].nodeValue;
+                var ngaySinh = sti.getElementsByTagName("ngaySinh")[0].childNodes[0].nodeValue;
+                var gioiTinh = sti.getElementsByTagName("gioiTinh")[0].childNodes[0].nodeValue;
+
+                var tbodysinhvien = document.getElementById("tbodysinhvien");
+                var tr = document.createElement("tr");
+                tr.onclick = function() { showDetail(this); }; // Add click event to row
+                tbodysinhvien.appendChild(tr);
+
+                var tdmssv = document.createElement("td");
+                tdmssv.innerText = mssv;
+                tr.appendChild(tdmssv);
+
+                var tdhoten = document.createElement("td");
+                tdhoten.innerText = hoTen;
+                tr.appendChild(tdhoten);
+
+                var tdngaysinh = document.createElement("td");
+                tdngaysinh.innerText = ngaySinh;
+                tr.appendChild(tdngaysinh);
+
+                var tdgioitinh = document.createElement("td");
+                tdgioitinh.innerText = gioiTinh;
+                tr.appendChild(tdgioitinh);
+            }
+        }
+
+
+        function showDetail(row) {
+            var detailContainer = document.getElementById("detailContainer");
+            detailContainer.innerHTML = ""; 
+
+            var detailTable = document.createElement("table");
+            detailTable.className = "detailTable";
+
+            var detailRow1 = detailTable.insertRow(0);
+            var cell1 = detailRow1.insertCell(0);
+            cell1.colSpan = 2;
+            cell1.innerHTML = "Chi tiết thông tin sinh viên";
+            cell1.style.backgroundColor = "#FFC000"; // Tô màu vàng cho dòng đầu tiên
+
+            var detailRow2 = detailTable.insertRow(1);
+            detailRow2.insertCell(0).innerHTML = "Mã sinh viên";
+            detailRow2.insertCell(1).innerHTML = row.cells[0].innerHTML;
+
+            var detailRow3 = detailTable.insertRow(2);
+            detailRow3.insertCell(0).innerHTML = "Họ tên";
+            detailRow3.insertCell(1).innerHTML = row.cells[1].innerHTML;
+
+            var detailRow4 = detailTable.insertRow(3);
+            detailRow4.insertCell(0).innerHTML = "Ngày sinh";
+            detailRow4.insertCell(1).innerHTML = row.cells[2].innerHTML;
+
+            var detailRow5 = detailTable.insertRow(4);
+            var cell5 = detailRow5.insertCell(0);
+            var cell6 = detailRow5.insertCell(1);
+            cell5.innerHTML = "Giới tính";
+            cell6.innerHTML = row.cells[3].innerHTML === "Nữ" ? "Nữ" : "Nam";
+
+            detailContainer.appendChild(detailTable);
+
+            // Thêm CSS cho dòng chi tiết
+            for (var i = 0; i < detailTable.rows.length; i++) {
+                detailTable.rows[i].style.textAlign = "center";
+            }
+        }
+
+        function sortTable(column) {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("studentTable");
+            switching = true;
+
+            // Check if the same column is clicked
+            if (currentSortColumn === column) {
+                currentSortDirection = (currentSortDirection === 'asc') ? 'desc' : 'asc'; // Toggle direction
+            } else {
+                currentSortDirection = 'asc'; // Default to ascending if a new column is clicked
+            }
+            currentSortColumn = column; // Update the current sort column
+
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+
+                for (i = 2; i < (rows.length - 1); i++) { // Bắt đầu từ hàng thứ 2 để bỏ qua header
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[column];
+                    y = rows[i + 1].getElementsByTagName("TD")[column];
+
+                    var xValue, yValue;
+                    if (column === 0) { // Cột số
+                        xValue = parseInt(x.innerHTML);
+                        yValue = parseInt(y.innerHTML);
+                    } else {  // Cột chữ
+                        xValue = x.innerHTML.toLowerCase();
+                        yValue = y.innerHTML.toLowerCase();
+                    }
+
+                    if (currentSortDirection === "asc") {
+                        if (xValue > yValue) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else {
+                        if (xValue < yValue) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+
+        tai_danhsach_sinhvien();
+    </script>
+</body>
+</html>

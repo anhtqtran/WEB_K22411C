@@ -1,0 +1,29 @@
+<h1>Quản lý Fashion</h1>
+<div *ngIf="errorMessage" class="error">{{errorMessage}}</div>
+<button (click)="addNewFashion()">Thêm mới Fashion</button>
+<table>
+  <thead>
+    <tr>
+      <th>Hình ảnh</th>
+      <th>Tiêu đề</th>
+      <th>Style</th>
+      <th>Ngày tạo</th>
+      <th>Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fashion of fashions">
+      <td>
+        <img [src]="fashion.fashion_image" width="100px" height="100px" alt="Fashion Image">
+      </td>
+      <td>{{fashion.fashion_subject}}</td>
+      <td>{{fashion.style}}</td>
+      <td>{{fashion.createdAt | date:'dd/MM/yyyy'}}</td>
+      <td>
+        <button (click)="viewDetail(fashion)">Xem chi tiết</button>
+        <button (click)="editFashion(fashion)">Sửa</button>
+        <button (click)="deleteFashion(fashion._id)">Xóa</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

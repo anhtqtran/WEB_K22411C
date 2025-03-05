@@ -1,0 +1,28 @@
+<root> 
+	<sinhvien>
+		<mssv>K114069876</mssv> 
+		<hoTen>Vô Danh</hoTen>
+		<ngaySinh>1/1/1993</ngaySinh> 
+		<gioiTinh>Nam</gioiTinh> 	
+        <hinh>sv1.png</hinh> 	
+	</sinhvien>
+
+    <sinhvien>
+		<mssv>K114069876</mssv> 
+		<hoTen>Vô Danh</hoTen>
+		<ngaySinh>1/1/1993</ngaySinh> 
+		<gioiTinh>Nam</gioiTinh> 	
+        <hinh>sv1.png</hinh> 	
+	</sinhvien>
+
+    <sinhvien>
+		<mssv>K114069876</mssv> 
+		<hoTen>Vô Danh</hoTen>
+		<ngaySinh>1/1/1993</ngaySinh> 
+		<gioiTinh>Nam</gioiTinh> 	
+        <hinh>sv1.png</hinh> 	
+	</sinhvien>
+
+
+    
+</root>

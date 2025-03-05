@@ -1,0 +1,18 @@
+node
+parents, children, siblings
+-----
+method:
+    phương thức tìm kiếm
+        byid
+        bytagname
+        byclassname
+    phuong thức thêm sưả xúa xóa
+        createelement
+        appendchild
+        removechild
+        replacechild
+        write
+    phương thức thêm sự kiện
+        onclick = function() {code}
+    thuộc tính tìm các html obj
+        
